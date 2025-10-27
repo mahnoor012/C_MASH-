@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - CMeSH</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #f4f4f4;
+      background-color: #0d1b2a;
+    }
+
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(13,27,42,0.9);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+
+     header .logo {
+    font-size: 28px;
+    font-weight: 900;
+    color: #ffcc00;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    font-style: italic; /* <-- italic added */
+}
+
+
+    header nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      padding: 5px 0;
+      position: relative;
+      transition: 0.3s;
+    }
+
+
+    /* Hover & Active underline */
+    header nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: #ffcc00;
+      transition: 0.3s;
+    }
+
+
+    header nav a:hover::after,
+    header nav a.active::after {
+      width: 100%;
+    }
+
+
+    #about {
+  background:
+    linear-gradient(rgba(13,27,42,0.85), rgba(13,27,42,0.95)),
+    url("https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=1200") no-repeat center/cover;
+  padding: 60px 20px;
+  text-align: center;
+  color: #fff; /* Paragraph text stays white */
+}
+
+/* Purono rule */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #00b4d8; /* ei ke change korte hobe */
+}
+
+/* Change kore */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffcc00; /* Sob section heading yellow */
+}
+
+
+
+    /* Section styling */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #00b4d8;
+    }
+
+
+    p {
+      max-width: 900px;
+      margin: 0 auto 40px;
+    }
+
+
+    .grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1 1 300px;
+      max-width: 300px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+
+    .card:hover {
+      transform: translateY(-8px);
+      background: rgba(0, 180, 216, 0.2);
+    }
+
+
+    .mission {
+      background: linear-gradient(rgba(0,36,70,0.8), rgba(0,36,70,0.9)),
+                  url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+      color: #fff;
+    }
+
+
+    .team {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                     }
+
+
+    .team .card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+
+    .different .card {
+      background: #1b263b;
+      color: #fff;
+    }
+
+
+/* Change kore */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffcc00; /* Sob section heading yellow */
+}
+
+
+
+    /* Footer */
+  footer {
+    background: linear-gradient(rgba(13,27,42,0.85), rgba(13,27,42,0.95)),
+                url("https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=1200") no-repeat center/cover;
+    color: #eee;
+    padding: 25px;
+    text-align: center;
+  }
+  footer p { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+
+  <!-- Header -->
+  <header>
+    <div class="logo">🕸️ C_MESH</div>
+    <nav>
+        <a href="{% url 'landing' %}">Home</a>
+        <a href="{% url 'about' %}" class="active">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+        <a href="{% url 'login' %}">Log In</a>
+    </nav>
+  </header>
+
+
+  <!-- Hero / About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p> At C_Mesh, we believe that education is not just about knowledge – it’s about growth, collaboration, and innovation. As a platform designed for Computer Science students, we aim to provide a space for individuals to connect, share resources, collaborate on coding projects, and enhance their skills. Whether it’s exploring new programming languages, solving real-world coding challenges, or preparing for interviews, we are dedicated to helping students make the right decisions and take the next step in their academic and professional journeys.
+
+
+    </p>
+  </section>
+
+
+
+
+
+
+
+
+  <!-- Core Values -->
+  <section id="values">
+    <h2>Our Core Values</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Innovation</h3>
+        <p>We constantly explore creative solutions to modern challenges.</p>
+      </div>
+      <div class="card">
+        <h3>Collaboration</h3>
+        <p>We believe teamwork and knowledge sharing build stronger results.</p>
+      </div>
+      <div class="card">
+        <h3>Excellence</h3>
+        <p>We strive for high standards in every project we deliver.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Mission -->
+  <section id="mission" class="mission">
+    <h2>Our Mission</h2>
+    <p>We aim to empower every Computer Science student – from individuals to teams working on projects, preparing for exams, and launching their careers.
+    We want to make sure:
+    <ul style="list-style-type: none; padding-left: 0; font-size: 1.1rem;">
+        <li>- No student feels isolated or unsupported in their learning journey.</li>
+        <li>- No student misses out on opportunities for skill development or career growth due to lack of resources.</li>
+        <li>- No student’s potential is limited by a lack of guidance or networking opportunities.</li>
+    </ul>
+    Whether it’s access to study resources, collaborating on projects, or connecting with mentors, **C_Mesh** will help you build the skills and knowledge you need to succeed in the tech world.
+</p>
+  </section>
+
+
+  <!-- Team -->
+  <section id="team" class="team">
+    <h2>Meet Our Team</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Female User">
+        <h3>Member One</h3>
+        <p>Frontend Developer</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Female User">
+        <h3>Member Two</h3>
+        <p>Backend Developer</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Male User">
+        <h3>Member Three</h3>
+        <p>Designer</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Different -->
+  <section class="different">
+    <h2>What Makes Us Different</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Student Focused</h3>
+        <p>Our platform is designed by students, for students.</p>
+      </div>
+      <div class="card">
+        <h3>Accessible</h3>
+        <p>We provide tools and resources that anyone can easily access.</p>
+      </div>
+      <div class="card">
+        <h3>Future Ready</h3>
+        <p>We integrate modern technology to prepare students for tomorrow.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 C MASH. All rights reserved.</p>
+    <p>Quick Links | About | Contact Us</p>
+    <p>📧 Email | 🌐 Social Media</p>
+  </footer>
+
+
+</body>
+</html>

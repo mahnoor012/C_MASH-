@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - CSE Hub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- Include Font Awesome -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { 
+            background: url('https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=1200') no-repeat center center fixed; 
+            background-size: cover;
+            color: #fff; 
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Header */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #ffcc00;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .back-btn:hover {
+            color: #f0a500;
+        }
+
+        /* Sign Up Box Styling */
+        .signup-box {
+            background: rgba(27, 38, 59, 0.9); /* Transparent dark background */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            width: 500px; /* Increased width */
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 15px;
+            width: 100%;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #ddd;
+            text-align: left;
+            width: 100%; 
+        }
+
+        input {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 100%; /* Full width of the box */
+            font-size: 14px;
+            outline: none;
+        }
+
+        /* Change border to yellow on focus */
+        input:focus {
+            border-color: #ffcc00;
+            box-shadow: 0 0 6px #ffcc00;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ffcc00; /* Yellow border */
+            border-radius: 8px;
+            background: #ffcc00;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #f0a500;
+            border-color: #f0a500;
+        }
+
+        .bottom-text {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .bottom-text a {
+            color: #ffcc00;  /* Changed to yellow for the links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error message */
+        .error-message {
+            color: #ff4d6d;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Back Button -->
+<a href="{% url 'landing' %}" class="back-btn"><i class="fas fa-arrow-left"></i></a> <!-- Back arrow icon -->
+
+<div class="signup-box">
+    <h2>Create Your Account</h2>
+    <form method="post" onsubmit="return validatePassword()">
+        {% csrf_token %}
+
+        <!-- Username Input -->
+        <label for="id_username">Username</label>
+        {{ form.username }}
+
+        <!-- Email Input -->
+        <label for="id_email">Email</label>
+        {{ form.email }}
+
+        <!-- Password Input -->
+        <label for="id_password1">Password</label>
+        {{ form.password1 }}
+
+        <!-- Confirm Password Input -->
+        <label for="id_password2">Confirm Password</label>
+        {{ form.password2 }}
+
+        <!-- Submit Button -->
+        <button type="submit">Sign Up</button>
+        <div id="error-box" class="error-message"></div>
+    </form>
+    <div class="bottom-text">
+        Already have an account? <a href="{% url 'login' %}">Log in</a>
+    </div>
+</div>
+
+<script>
+function validatePassword() {
+    const pass1 = document.getElementById("id_password1").value;
+    const pass2 = document.getElementById("id_password2").value;
+    const errorBox = document.getElementById("error-box");
+    errorBox.innerText = "";
+
+    // Rule 1: Minimum length
+    if (pass1.length < 8) {
+        errorBox.innerText = "The password must contain at least 8 characters.";
+        return false;
+    }
+
+    // Rule 2: Not only digits
+    if (/^\d+$/.test(pass1)) {
+        errorBox.innerText = "The password cannot be entirely numeric (only digits are not allowed).";
+        return false;
+    }
+
+    // Rule 3: Match confirm password
+    if (pass1 !== pass2) {
+        errorBox.innerText = "Password mismatch! Please recheck.";
+        return false;
+    }
+
+    return true; // Everything is valid, proceed with form submission
+}
+</script>
+
+</body>
+</html>

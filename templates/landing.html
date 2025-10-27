@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.Mesh</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background-color: #0d1b2a; color: #fff; line-height: 1.6; }
+
+        /* Header */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 50px; background: rgba(13,27,42,0.9);
+            position: sticky; top: 0; z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+       <!-- header .logo { font-size: 26px; font-weight: bold; color: #ffcc00; } -->
+       header .logo {
+    font-size: 28px;
+    font-weight: 900;
+    color: #ffcc00;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    font-style: italic; /* <-- italic added */
+}
+
+
+        header nav a {
+            color: #fff; margin-left: 20px; text-decoration: none;
+
+            padding: 8px 15px; border: 1px solid transparent; border-radius: 4px;
+            transition: 0.3s;
+        }
+        header nav a:hover { border-color: #ffcc00; color: #ffcc00; }
+
+        /* Hero */
+        .hero {
+            display: flex; justify-content: center; align-items: center;
+            padding: 80px 50px; flex-wrap: wrap;
+            background: linear-gradient(rgba(13,27,42,0.8), rgba(13,27,42,0.9)),
+                        url("https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=1200") no-repeat center/cover;
+        }
+        .hero-text { flex: 1; padding: 20px; text-align: left; }
+        .hero-text h1 { font-size: 40px; margin-bottom: 20px; color: #ffcc00; }
+        .hero-text p { font-size: 18px; margin-bottom: 20px; }
+        .hero-text button {
+            padding: 12px 25px; background: #ffcc00; border: none;
+            color: #0d1b2a; font-weight: bold; cursor: pointer; border-radius: 6px;
+            transition: 0.3s;
+        }
+        .hero-text button:hover { background: #fff; }
+        .hero-img { flex: 1; padding: 20px; text-align: center; }
+        .hero-img img { width: 90%; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+
+        /* Features */
+        .features {
+            display: flex; align-items: center; padding: 60px 50px; flex-wrap: wrap;
+            background: #1b263b;
+        }
+        .features img { width: 200px; margin: 10px; border-radius: 8px; }
+        .features-text { max-width: 500px; margin-left: 20px; }
+        .features-text p { margin-bottom: 12px; }
+
+        /* Cards */
+        .cards {
+            display: flex; justify-content: center; gap: 25px;
+            padding: 60px 50px; background: #f4f4f4; color: #000; flex-wrap: wrap;
+        }
+        .card {
+            background: #fff; padding: 25px; border-radius: 10px; width: 300px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15); text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.25); }
+        .card img { width: 100%; border-radius: 8px; margin-bottom: 15px; }
+
+        /* Connectivity */
+        .connectivity {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            padding: 60px 50px; background: #0d1b2a; flex-wrap: wrap; gap: 30px;
+        }
+        .connectivity img { width: 400px; border-radius: 8px; }
+        .faq { max-width: 450px; background: #1b263b; padding: 75px; border-radius: 10px; }
+        .faq h3 { margin-bottom: 15px; color: #ffcc00; }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(rgba(13,27,42,0.85), rgba(13,27,42,0.95)),
+                        url("https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=1200") no-repeat center/cover;
+            color: #eee;
+            padding: 25px;
+            text-align: center;
+        }
+        footer p { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">🕸️ C_MESH</div>
+
+    <nav>
+        <a href="{% url 'landing' %}" class="active">Home</a> <!-- Active link for landing page -->
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+        <a href="{% url 'login' %}">Log In</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-text">
+        <h1>"WHEN IN DOUBT, JOIN US."</h1>
+        <p>Connecting CSE students with resources, peers, and opportunities.</p>
+        <a href="{% url 'signup' %}">
+    <button>Sign Up</button>
+</a>
+
+    </div>
+    <div class="hero-img">
+        <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Hero Image">
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+    <div>
+        <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Collaboration">
+        <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Coding">
+    </div>
+    <div class="features-text">
+        <p>✔️ A one-stop platform for sharing notes, projects, and experiences.</p>
+        <p>✔️ Connect with peers, exchange ideas, and develop coding projects.</p>
+        <p>✔️ Get assistance on coding doubts and interview preparation.</p>
+        <p>✔️ Stay updated with events, internships, and coding competitions.</p>
+    </div>
+</section>
+
+<!-- Cards -->
+<section class="cards">
+    <div class="card">
+        <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Collaboration">
+        <h3>Collaboration</h3>
+        <p>Meet & collaborate with fellow students, share ideas, and work on projects.</p>
+    </div>
+    <div class="card">
+        <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Academics">
+        <h3>Academic Assistance</h3>
+        <p>Access notes, tutorials, and resources for your coursework and exams.</p>
+    </div>
+    <div class="card">
+        <img src="https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Updates">
+        <h3>Stay Updated</h3>
+        <p>Get notified about the latest coding competitions, internships, and events.</p>
+    </div>
+</section>
+
+<!-- Connectivity -->
+<section class="connectivity">
+    <div>
+        <img src="https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Connectivity">
+    </div>
+    <div class="faq">
+        <h3>Frequently Asked Questions</h3>
+        <p><strong>Q:</strong> How can I join C_MASH?<br>
+        <strong>A:</strong> Just sign up and create your free account to connect with others.</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 C_MASH. All rights reserved.</p>
+    <p>Quick Links | About | Contact Us</p>
+    <p>📧 Email | 🌐 Social Media</p>
+</footer>
+
+</body>
+</html>

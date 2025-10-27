@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- Include Font Awesome -->
+    <style>
+        /* ---------------- Internal CSS ---------------- */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d1b2a;
+            color: #fff;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #0d1b2a;
+            color: white;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ecf0f1;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: #ecf0f1;
+            padding: 12px;
+            margin: 8px 0;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+            color: #fff;
+        }
+
+        .sidebar a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Topbar */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            background: rgba(13, 27, 42, 0.9);
+            position: fixed;
+            top: 0;
+            width: calc(100% - 250px); /* Full width minus sidebar width */
+            left: 250px;
+            z-index: 999;
+        }
+
+        .topbar .title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Push the user info to the right */
+        .topbar .user {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            margin-left: auto;  /* This will align the user section to the right */
+        }
+
+        .topbar .user span {
+            margin-right: 10px;
+            font-weight: 500;
+        }
+
+        .topbar .user a {
+            color: #00b4d8;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .topbar .user .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        /* Content area */
+        .main-content {
+            margin-left: 250px;
+            margin-top: 80px;  /* space for topbar */
+            padding: 20px;
+            min-height: calc(100vh - 80px);  /* keeps full height */
+            box-sizing: border-box;
+        }
+
+        /* Add site form */
+        .add-site {
+            background: #0f2130;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 100px;
+        }
+
+        .site-form .field input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #234;
+            background: #0b1a26;
+            color: #fff;
+            margin-top: 6px;
+        }
+
+        .btn {
+            background: #00b4d8;
+            color: #000;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        /* Website cards grid */
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .site-card {
+            position: relative;
+            background: #1f2a3d;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .site-card img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            margin: 0 auto 8px;
+            display: block;
+        }
+
+        .site-name {
+            color: #fff;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-btn {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            top: 20px;
+            right: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="logo">
+        <span class="icon">🕸</span> <span class="text">C_MESH</span>
+    </div>
+
+    <a href="{% url 'dashboard1' %}"><i class="fas fa-tachometer-alt"></i>Dashboard </a>
+    <a href="#"><i class="fas fa-bullhorn"></i>Announcements </a>
+    <a href="{% url 'calendar' %}"><i class="fas fa-calendar-alt"></i>Calendar </a>
+    <a href="{% url 'profile' %}"><i class="fas fa-user-circle"></i>User Profile </a>
+    <a href="#"><i class="fas fa-sticky-note"></i>Notes </a>
+    <a href="#"><i class="fas fa-users"></i>Friends </a>
+    <a href="{% url 'dashboard' %}"><i class="fas fa-gamepad"></i>CpArena </a>
+    <a href="#"><i class="fas fa-project-diagram"></i>Projects </a>
+    <a href="#"><i class="fas fa-robot"></i>Ask AI </a>
+    <a href="#"><i class="fas fa-lightbulb"></i>IdeaShare </a>
+    <a href="#"><i class="fas fa-comments"></i>Chat </a>
+</div>
+
+<!-- Topbar -->
+<div class="topbar">
+    <div class="title"></div>
+    <div class="user">
+        <span>{{ user.username }}</span> | <a href="#">Logout</a>
+        {% if profile.profile_picture %}
+        <img src="{{ profile.profile_picture.url }}" alt="Profile">
+        {% else %}
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Default Profile">
+        {% endif %}
+    </div>
+</div>
+
+
+    <!-- Main Content -->
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

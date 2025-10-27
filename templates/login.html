@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In - CSE Hub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- Include Font Awesome -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body {
+            background: url('https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=1200') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #ffcc00;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .back-btn:hover {
+            color: #f0a500;
+        }
+
+        /* Sign Up Box Styling */
+        .login-box {
+            background: rgba(27, 38, 59, 0.9); /* Transparent dark background */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            width: 500px; /* Increased width */
+            text-align: center; /* Center everything */
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #ddd;
+            text-align: left;
+            width: 100%; 
+        }
+
+        input {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 100%; /* Full width of the box */
+            font-size: 14px;
+            outline: none;
+        }
+
+        /* Add yellow border on focus */
+        input:focus {
+            border-color: #ffcc00;
+            box-shadow: 0 0 6px #ffcc00;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ffcc00; /* Yellow border */
+            border-radius: 8px;
+            background: #ffcc00; /* Yellow background */
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #f0a500;
+            border-color: #f0a500;
+        }
+
+        .error-message {
+            color: #ff4d6d;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .bottom-text {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .bottom-text a {
+            color: #ffcc00;  /* Yellow links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Back Button -->
+<a href="{% url 'landing' %}" class="back-btn"><i class="fas fa-arrow-left"></i> </a> <!-- Back arrow icon -->
+
+<div class="login-box">
+    <h2>Log In</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Username Input -->
+        <label for="id_username">Username</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+            <div class="error-message">{{ form.username.errors }}</div>
+        {% endif %}
+
+        <!-- Password Input -->
+        <label for="id_password">Password</label>
+        {{ form.password }}
+        {% if form.password.errors %}
+            <div class="error-message">{{ form.password.errors }}</div>
+        {% endif %}
+
+        <!-- Submit Button -->
+        <button type="submit">Log In</button>
+
+        <!-- Form Errors -->
+        {% if form.non_field_errors %}
+            <div class="error-message">
+                {% for error in form.non_field_errors %}
+                    {{ error }}<br>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </form>
+
+    <!-- Bottom text with links -->
+    <div class="bottom-text">
+        Don’t have an account? <a href="{% url 'signup' %}">Sign up</a><br>
+        <a href="{% url 'reset_password' %}">Forgot Password?</a> <!-- Link to Password Reset -->
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSE Hub - Contact Us</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+  body { background-color: #0d1b2a; color: #fff; line-height: 1.6; }
+
+
+  /* Header */
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 50px; background: rgba(13,27,42,0.9);
+    position: sticky; top: 0; z-index: 1000;
+    backdrop-filter: blur(10px);
+  }
+   header .logo {
+    font-size: 28px;
+    font-weight: 900;
+    color: #ffcc00;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    font-style: italic; /* <-- italic added */
+}
+  header nav a {
+    color: #fff; margin-left: 20px; text-decoration: none;
+    padding: 8px 15px; border: 1px solid transparent; border-radius: 4px;
+    transition: 0.3s;
+  }
+  header nav a:hover { border-color: #ffcc00; color: #ffcc00; }
+
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1529101091764-c3526daf38fe?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+    height: 400px;
+    display: flex; justify-content: center; align-items: center;
+    text-align: center;
+  }
+  .hero::after {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero h1 { font-size: 48px; color: #ffcc00; margin-bottom: 10px; }
+  .hero p { font-size: 18px; color: #ddd; max-width: 700px; margin: auto; }
+
+
+  /* Contact Info */
+  .contact-info {
+    display: flex; justify-content: center; gap: 20px;
+    background: #1b263b; padding: 30px 20px; flex-wrap: wrap;
+  }
+  .contact-box {
+    background: #0d1b2a; padding: 20px 25px; border-radius: 10px;
+    display: flex; align-items: center; gap: 10px;
+    min-width: 250px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    font-size: 16px;
+  }
+
+
+  /* Contact Form Section */
+  .contact-section {
+    display: flex; justify-content: space-around; align-items: flex-start;
+    padding: 60px 50px; flex-wrap: wrap; gap: 40px;
+    background: linear-gradient(rgba(13,27,42,0.9), rgba(13,27,42,0.95)),
+                url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+    background-size: cover;
+  }
+  form {
+    display: flex; flex-direction: column; gap: 15px;
+    background: rgba(13,27,42,0.85); padding: 25px; border-radius: 10px;
+    flex: 1; min-width: 300px;
+  }
+  form input, form textarea {
+    padding: 12px; border: none; border-radius: 5px;
+    background: #1b263b; color: #fff;
+  }
+  form button {
+    padding: 12px; background: #ffcc00; border: none; border-radius: 6px;
+    color: #0d1b2a; font-weight: bold; cursor: pointer;
+    transition: 0.3s;
+  }
+  form button:hover { background: #fff; }
+
+
+  .contact-text {
+    flex: 1; min-width: 300px; padding: 20px;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+  }
+  .contact-text img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  .contact-text h2 { font-size: 32px; margin-bottom: 15px; color: #ffcc00; }
+  .contact-text p { color: #ddd; font-size: 16px; }
+
+
+  /* Newsletter */
+  .newsletter {
+
+    background: linear-gradient(rgba(13,27,42,0.85), rgba(13,27,42,0.95)),
+url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+    background-size: cover;
+    position: relative; padding: 60px 20px; text-align: center;
+  }
+  .newsletter::after {
+    content: ""; position: absolute; top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.6);
+  }
+  .newsletter-content { position: relative; z-index: 2; color: #fff; }
+  .newsletter h3 { font-size: 28px; margin-bottom: 15px; }
+  .newsletter p { margin-bottom: 20px; font-size: 16px; color: #ddd; }
+  .newsletter input {
+    padding: 12px; width: 250px; border: none; border-radius: 5px; margin-right: 10px;
+  }
+  .newsletter button {
+    padding: 12px 20px; background: #ffcc00; border: none; border-radius: 5px;
+    font-weight: bold; cursor: pointer;
+  }
+
+
+  /* Footer */
+        footer {
+            background: linear-gradient(rgba(13,27,42,0.85), rgba(13,27,42,0.95)),
+                        url("https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=1200") no-repeat center/cover;
+            color: #eee;
+            padding: 25px;
+            text-align: center;
+        }
+        footer p { margin-bottom: 10px; }
+
+  /* Responsive */
+  @media(max-width:768px) {
+    .contact-section { flex-direction: column; }
+    .contact-info { flex-direction: column; align-items: center; }
+    .footer-company-links { flex-direction: column; }
+  }
+
+
+</style>
+</head>
+<body>
+
+
+<!-- Navbar -->
+<header>
+ <div class="logo">🕸️ C_MESH</div>
+ <nav>
+        <a href="{% url 'landing' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}" class="active">Contact</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+        <a href="{% url 'login' %}">Log In</a>
+ </nav>
+</header>
+
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Contact Us</h1>
+    <p>We welcome your questions, feedback, or inquiries. Reach out to C_MASH for support, collaboration, and updates.</p>
+  </div>
+</section>
+
+
+<!-- Contact Info -->
+<div class="contact-info">
+  <div class="contact-box">📍 Dhaka, Bangladesh</div>
+  <div class="contact-box">📞 +880 1234 567890</div>
+  <div class="contact-box">✉️ info@csehub.bd</div>
+</div>
+
+
+<!-- Contact Form Section -->
+<section class="contact-section">
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="5" placeholder="Your Message"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+  <div class="contact-text">
+    <img src="https://img.icons8.com/ios-filled/100/ffcc00/communication.png" alt="Contact Icon">
+    <h2>Get in Touch</h2>
+    <p>We strive to respond to all inquiries within 48 hours. Thank you for your interest and patience.</p>
+  </div>
+</section>
+
+
+<!-- Newsletter -->
+<section class="newsletter">
+  <div class="newsletter-content">
+    <h3>Subscribe to Our Newsletter</h3>
+    <p>Stay connected with C_MASH for updates, ideas, and events.</p>
+    <input type="email" placeholder="Email Address" required>
+    <button>Subscribe</button>
+  </div>
+</section>
+
+
+<footer>
+    <p>&copy; 2025 C_MASH. All rights reserved.</p>
+    <p>Quick Links | About | Contact Us</p>
+    <p>📧 Email | 🌐 Social Media</p>
+</footer>
+
+</body>
+</html>
